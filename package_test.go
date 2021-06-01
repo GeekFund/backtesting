@@ -11,49 +11,39 @@ import (
 )
 
 func TestPackEngine(t *testing.T) {
-	start := ParseDate("2010-01-01")
-	end := ParseDate("2021-05-01")
+	start := ParseDate("2015-01-01")
+	end := ParseDate("2022-12-01")
 	var amount float32 = 10000
 	var items PackItemList
 
 	items = append(items, PackItem{
-		Engine:  getEngine("001938", start, end),
+		// Engine:  getEngine("007412", start, end), //景顺长城绩优
+		Engine:  getEngine("260108", start, end), //景顺长城新兴成长
 		Precent: 20,
 		TOF:     Radical,
 	})
 	items = append(items, PackItem{
-		Engine:  getEngine("163406", start, end),
-		Precent: 40,
+		// Engine:  getEngine("006228", start, end), //中欧医疗创新
+		Engine:  getEngine("001938", start, end), //中欧时代先锋
+		Precent: 20,
 		TOF:     Radical,
 	})
 	items = append(items, PackItem{
-		Engine:  getEngine("110011", start, end),
+		// Engine:  getEngine("163417", start, end), //兴全合宜
+		Engine:  getEngine("163406", start, end), //兴全合润
+		Precent: 20,
+		TOF:     Radical,
+	})
+	items = append(items, PackItem{
+		// Engine:  getEngine("005827", start, end), //易方达蓝筹
+		Engine:  getEngine("110011", start, end), //易方达中小盘
 		Precent: 20,
 		TOF:     Radical,
 	})
 	e := NewPackEngine(items, start, amount)
+	// e.SetBanlance(50000)
 	e.Run()
 
-	// 	bm := map[int]string{1: "买入", 2: "分红", 3: "追加", 4: "卖出"}
-	// log.Printf("%s %s %s 净值=%.4f 金额=%.2f 份额=%.2f 手续费=%.2f 账户余额=%.2f 总资产=%.2f",
-	// 	item.strategy.Code,
-	// 	DateToString(trans.Date),
-	// 	bm[int(trans.TransType)],
-	// 	trans.NAV,
-	// 	trans.Amount,
-	// 	trans.Shares,
-	// 	trans.TransFee,
-	// 	e.balance,
-	// 	e.value,
-	// )
-
-	// log.Printf("投资结果 本金=%.2f 余额=%.2f 价值=%.2f 利润=%.2f 收益率=%.2f",
-	// 	e.invest,
-	// 	e.balance,
-	// 	e.value,
-	// 	e.value-e.invest,
-	// 	(e.value-e.invest)/e.invest*100,
-	// )
 }
 
 func getNws(code string) NetWorthList {

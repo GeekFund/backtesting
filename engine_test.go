@@ -8,10 +8,10 @@ import (
 )
 
 func TestEngine(t *testing.T) {
-	nws := getNws("110011")
+	nws := getNws("163406")
 	var amount float32 = 1000
 	start := ParseDate("2010-01-01")
-	end := ParseDate("2021-05-01")
+	end := ParseDate("2021-03-01")
 	e := NewEngine(Strategy{
 		BasicAmount: amount,
 		MinAmount:   100,

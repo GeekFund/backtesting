@@ -151,6 +151,12 @@ func (e *PackEngine) refresh() {
 	}
 }
 
+//AddBanlance 添加投入金额
+func (e *PackEngine) AddBanlance(banlance float32) {
+	e.balance += banlance
+	e.invest += banlance
+}
+
 func (e *PackEngine) append() {
 	//每月投入金额到现金
 	e.balance += e.amount
